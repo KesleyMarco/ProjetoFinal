@@ -1,0 +1,30 @@
+--- HISTÓRICO DE EXTRATO PERMANENTE ---
+Conta criada/acessada no sistema.
+Titular: Felipe Costa | Número: 1010-1
+---------------------------------------
+Depósito: + R$ 1000.0 | Saldo pós-op: R$ 9362.5
+Depósito: + R$ 100.0 | Saldo pós-op: R$ 9462.5
+Saque: - R$ 1000.0 | Saldo pós-op: R$ 8462.5
+Imposto Mensal Debitado: - R$ 15.00 | Saldo pós-op: R$ 8460.0
+
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Saque de R$ 90.0 realizado!
+Depósito de R$ 90.0 realizado!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Impostos recolhidos com sucesso!
+Telefone atualizado com sucesso!
+Telefone atualizado com sucesso!
+Telefone atualizado com sucesso!
+Limite de crédito atualizado!
