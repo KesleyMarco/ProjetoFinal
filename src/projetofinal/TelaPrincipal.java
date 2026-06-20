@@ -10,7 +10,7 @@ public class TelaPrincipal extends JFrame {
     private String arquivoBanco = "banco_dados.csv";
 
     private final Color AMARELO_BB = new Color(252, 222, 4);
-    private final Color AZUL_BB = new Color(0, 90, 165);
+    private final Color azul = new Color(0, 90, 165);
     private final Color FUNDO_CLARO = new Color(240, 240, 240);
 
     public TelaPrincipal() {
@@ -30,7 +30,7 @@ public class TelaPrincipal extends JFrame {
         
         JLabel lblLogo = new JLabel("  BANCO DO BRASIL", SwingConstants.CENTER);
         lblLogo.setFont(new Font("Arial", Font.BOLD, 26));
-        lblLogo.setForeground(AZUL_BB);
+        lblLogo.setForeground(azul);
         painelBanner.add(lblLogo, BorderLayout.CENTER);
         add(painelBanner, BorderLayout.NORTH);
 
@@ -157,7 +157,7 @@ public class TelaPrincipal extends JFrame {
         final JFormattedTextField campoTelefone = txtTelefone;
 
         JButton btnCadastrar = new JButton("CADASTRAR");
-        btnCadastrar.setBackground(AZUL_BB);
+        btnCadastrar.setBackground(azul);
         btnCadastrar.setForeground(Color.WHITE);
         btnCadastrar.setFont(new Font("Arial", Font.BOLD, 12));
 
@@ -195,8 +195,18 @@ public class TelaPrincipal extends JFrame {
                 String cpfCompleto = campoCpf.getText();
                 String telCompleto = campoTelefone.getText();
                 
-                if (numDigitado.contains("_") || cpfCompleto.contains("_") || telCompleto.contains("_") || nome.isEmpty() || senha.isEmpty()) {
+                // Remove pontos e traços para contar apenas os números do CPF
+                String cpfApenasNumeros = cpfCompleto.replaceAll("[^0-9]", "");
+
+                // Verifica se faltam dados básicos ou se o número da conta/telefone estão incompletos
+                if (numDigitado.contains("_") || telCompleto.contains("_") || nome.isEmpty() || senha.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos corretamente com o tamanho exigido.", "Campos Incompletos", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
+                // Nova trava exclusiva para o CPF (exatos 11 dígitos)
+                if (cpfApenasNumeros.length() != 11) {
+                    JOptionPane.showMessageDialog(this, "O CPF deve conter exatamente 11 números.", "CPF Inválido", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
@@ -223,9 +233,9 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
-        return painel;
+        return painel; // <-- O RETORNO E FECHAMENTO DO PAINEL QUE FALTAVAM ESTÃO AQUI!
     }
-
+        
     private JPanel criarPainelListar() {
         JPanel painel = new JPanel(new BorderLayout(10, 10));
         painel.setBackground(Color.WHITE);
@@ -237,7 +247,7 @@ public class TelaPrincipal extends JFrame {
         JScrollPane scroll = new JScrollPane(txtLista);
 
         JButton btnAtualizar = new JButton("Atualizar Lista");
-        btnAtualizar.setBackground(AZUL_BB);
+        btnAtualizar.setBackground(azul);
         btnAtualizar.setForeground(Color.WHITE);
 
         Runnable atualizarLista = () -> {

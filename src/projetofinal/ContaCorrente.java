@@ -29,11 +29,15 @@ public class ContaCorrente extends ContaBancaria implements Tributavel {
     }
 
     @Override
-    public void calcularImpostos() {
-        this.saldo -= 2.5;
-        System.out.println("Impostos calculados e debitados da Conta Corrente.");
+    public void calcularImpostos() throws Exception {
+        double valorImposto = 2.5;
+        // Verifica se o cliente tem o dinheiro exato ou mais do que o imposto
+        if (this.saldo >= valorImposto) {
+            this.saldo -= valorImposto;
+            System.out.println("Impostos calculados e debitados da Conta Corrente.");
+        } else {
+            // Se não tiver, trava a operação e devolve um erro para a tela
+            throw new Exception("Saldo insuficiente para pagar o imposto de R$ " + valorImposto + ".");
+        }
     }
-
-    
-    
 }

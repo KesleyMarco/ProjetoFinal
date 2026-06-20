@@ -16,8 +16,8 @@ public class TelaGerenciamentoConta extends JFrame {
     private JLabel lblLimiteOuTaxa;
     private JLabel lblTelefone;
 
-    private final Color AZUL_BB_ESCURO = new Color(0, 90, 165);
-    private final Color AZUL_BOTOES = new Color(13, 110, 253);
+    private final Color azulescuro = new Color(0, 90, 165);
+    private final Color azul = new Color(13, 110, 253);
     private final Color FUNDO_CINZA = new Color(245, 245, 245);
 
     public TelaGerenciamentoConta(ContaBancaria conta, Agencia agencia, String arquivoBanco) {
@@ -38,7 +38,7 @@ public class TelaGerenciamentoConta extends JFrame {
         inicializarArquivoExtrato();
 
         JPanel painelTopo = new JPanel(new BorderLayout());
-        painelTopo.setBackground(AZUL_BB_ESCURO);
+        painelTopo.setBackground(azulescuro);
         painelTopo.setPreferredSize(new Dimension(480, 50));
         
         JLabel lblTituloTopo = new JLabel("  Painel da Conta - Titular: " + conta.getNomeTitular(), SwingConstants.LEFT);
@@ -67,7 +67,7 @@ public class TelaGerenciamentoConta extends JFrame {
         
         lblSaldo = new JLabel(" Saldo Atual: R$ " + conta.getSaldo());
         lblSaldo.setFont(new Font("Arial", Font.BOLD, 14));
-        lblSaldo.setForeground(AZUL_BB_ESCURO);
+        lblSaldo.setForeground(azulescuro);
         
         lblLimiteOuTaxa = new JLabel();
         lblLimiteOuTaxa.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -187,8 +187,12 @@ public class TelaGerenciamentoConta extends JFrame {
 
         btnImposto.addActionListener(e -> {
             if (conta instanceof Tributavel) {
-                ((Tributavel) conta).calcularImpostos();
-                salvarEAtualizar("Impostos recolhidos com sucesso!");
+                try {
+                    ((Tributavel) conta).calcularImpostos();
+                    salvarEAtualizar("Impostos recolhidos com sucesso!");
+                } catch (Exception ex) {
+                    erro(ex.getMessage());
+                }
             } else {
                 erro("Esta conta não possui tarifas tributáveis.");
             }
@@ -197,7 +201,7 @@ public class TelaGerenciamentoConta extends JFrame {
 
     private JButton customizarBotao(String texto) {
         JButton botao = new JButton(texto);
-        botao.setBackground(AZUL_BOTOES);
+        botao.setBackground(azul);
         botao.setForeground(Color.WHITE);
         botao.setFont(new Font("Arial", Font.BOLD, 12));
         botao.setFocusPainted(false);

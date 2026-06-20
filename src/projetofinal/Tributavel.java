@@ -9,5 +9,5 @@ package projetofinal;
  * @author CG3040224
  */
 public interface Tributavel {
-    public void calcularImpostos();
+    public void calcularImpostos() throws Exception;
 }
